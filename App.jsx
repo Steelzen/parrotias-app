@@ -15,7 +15,9 @@ import {
   ScrollView,
   RefreshControl,
   SafeAreaView,
+  TouchableOpacity,
 } from 'react-native';
+import Entypo from 'react-native-vector-icons/Entypo';
 import {WebView} from 'react-native-webview';
 import * as Progress from 'react-native-progress';
 import NetInfo from '@react-native-community/netinfo';
@@ -44,6 +46,7 @@ const App = () => {
     const newProgress = nativeEvent.progress * 100;
     setProgress(newProgress);
   };
+
   const handleReload = () => {
     if (isConnected) {
       webViewRef.reload();
@@ -60,6 +63,18 @@ const App = () => {
       webViewRef.current.reload();
     }
     scrollY = contentOffset;
+  };
+
+  const handleRefresh = () => {
+    webViewRef.current.reload();
+  };
+
+  const handleBack = () => {
+    webViewRef.current.goBack();
+  };
+
+  const handleForward = () => {
+    webViewRef.current.goForward();
   };
 
   // Subscribe
@@ -105,6 +120,20 @@ const App = () => {
             onError={handleReload}
           />
         )}
+        <View style={styles.buttonBar}>
+          <TouchableOpacity style={styles.refreshButton} onPress={handleBack}>
+            <Entypo
+              name="chevron-thin-left"
+              size={23}
+              color="rgba(0, 100, 255, 0.5)"
+            />
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.refreshButton}
+            onPress={handleRefresh}>
+            <Entypo name="cw" size={23} color="rgba(0, 100, 255, 0.5)" />
+          </TouchableOpacity>
+        </View>
       </View>
     </SafeAreaView>
   );
@@ -112,7 +141,7 @@ const App = () => {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    flex: 3,
   },
   content: {
     flex: 3,
@@ -123,6 +152,26 @@ const styles = StyleSheet.create({
     flex: 1,
     width: '100%',
     height: '100%',
+  },
+  buttonBar: {
+    position: 'absolute',
+    flex: 1,
+    flexDirection: 'column',
+    bottom: '12%',
+    left: '78.5%',
+    right: 0,
+    width: '20%',
+    height: 120,
+    backgroundColor: 'rgba(0, 0, 0, 0)',
+    justifyContent: 'space-evenly',
+    alignItems: 'center',
+  },
+  refreshButton: {
+    padding: 10,
+    backgroundColor: 'rgba(255, 255, 255, 0.7)',
+    borderRadius: 100,
+    borderWidth: 1,
+    borderColor: 'rgba(0, 100, 255, 0.5)',
   },
   image: {
     width: '70%',
