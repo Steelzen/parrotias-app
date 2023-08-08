@@ -104,7 +104,7 @@ const App = () => {
         )}
 
         {!isConnected && (
-          <View style={styles.content}>
+          <View style={styles.content} backgroundColor="white">
             <Image style={styles.image} source={require('./img/No_wifi.png')} />
           </View>
         )}
@@ -120,20 +120,23 @@ const App = () => {
             onError={handleReload}
           />
         )}
-        <View style={styles.buttonBar}>
-          <TouchableOpacity style={styles.refreshButton} onPress={handleBack}>
-            <Entypo
-              name="chevron-thin-left"
-              size={21}
-              color="rgba(50, 65, 88, 0.6)"
-            />
-          </TouchableOpacity>
-          <TouchableOpacity
-            style={styles.refreshButton}
-            onPress={handleRefresh}>
-            <Entypo name="cw" size={21} color="rgba(50, 65, 88, 0.6)" />
-          </TouchableOpacity>
-        </View>
+
+        {isConnected && (
+          <View style={styles.buttonBar}>
+            <TouchableOpacity style={styles.refreshButton} onPress={handleBack}>
+              <Entypo
+                name="chevron-thin-left"
+                size={21}
+                color="rgba(50, 65, 88, 0.6)"
+              />
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={styles.refreshButton}
+              onPress={handleRefresh}>
+              <Entypo name="cw" size={21} color="rgba(50, 65, 88, 0.6)" />
+            </TouchableOpacity>
+          </View>
+        )}
       </View>
     </SafeAreaView>
   );
