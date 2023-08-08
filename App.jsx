@@ -124,14 +124,14 @@ const App = () => {
           <TouchableOpacity style={styles.refreshButton} onPress={handleBack}>
             <Entypo
               name="chevron-thin-left"
-              size={23}
-              color="rgba(0, 100, 255, 0.5)"
+              size={21}
+              color="rgba(50, 65, 88, 0.6)"
             />
           </TouchableOpacity>
           <TouchableOpacity
             style={styles.refreshButton}
             onPress={handleRefresh}>
-            <Entypo name="cw" size={23} color="rgba(0, 100, 255, 0.5)" />
+            <Entypo name="cw" size={21} color="rgba(50, 65, 88, 0.6)" />
           </TouchableOpacity>
         </View>
       </View>
@@ -157,21 +157,21 @@ const styles = StyleSheet.create({
     position: 'absolute',
     flex: 1,
     flexDirection: 'column',
-    bottom: '1%',
-    left: '1%',
+    bottom: '12%',
+    left: '77%',
     right: 0,
     width: '20%',
-    height: 120,
+    height: 140,
     backgroundColor: 'rgba(0, 0, 0, 0)',
     justifyContent: 'space-evenly',
     alignItems: 'center',
   },
   refreshButton: {
     padding: 10,
-    backgroundColor: 'rgba(255, 255, 255, 0.7)',
+    backgroundColor: 'rgba(232, 230, 230, 0.5)',
     borderRadius: 100,
-    borderWidth: 1,
-    borderColor: 'rgba(0, 100, 255, 0.5)',
+    borderWidth: 1.5,
+    borderColor: 'rgba(50, 65, 88, 0.5)',
   },
   image: {
     width: '70%',
