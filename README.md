@@ -5,10 +5,12 @@ This is a new [**React Native**](https://reactnative.dev) project, bootstrapped 
 Enterprise mobile application to load parrotias.com on iOS and Android devices. 
 
 ### Andorid
-<img width="422" alt="Screenshot 2023-08-08 at 00 59 48" src="https://github.com/Steelzen/parrotias-app/assets/94742043/115d37c9-7caf-47a9-ba57-e76932eb2cfc">
+<img width="402" alt="Screenshot 2023-08-08 at 11 55 39" src="https://github.com/Steelzen/parrotias-app/assets/94742043/ad14d260-738f-4b5c-b9fd-e65dcf6973e7">
+
 
 ### iOS
-<img width="418" alt="Screenshot 2023-08-08 at 00 59 28" src="https://github.com/Steelzen/parrotias-app/assets/94742043/5656e8af-59bc-4ddd-95f7-9c6752c41431">
+<img width="452" alt="Screenshot 2023-08-08 at 11 56 59" src="https://github.com/Steelzen/parrotias-app/assets/94742043/cdac8565-d038-4701-89a6-146139d8d924">
+
 
 # Getting Started On Local
 
