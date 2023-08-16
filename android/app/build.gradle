@@ -79,8 +79,8 @@ android {
         applicationId "com.parrotias"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 2
-        versionName "1.1"
+        versionCode 3
+        versionName "1.2"
     }
     signingConfigs {
         debug {
@@ -100,6 +100,7 @@ android {
         debug {
             signingConfig signingConfigs.debug
         }
+        // In development: singingConfig must be signingConfigs.debug
         // when release signingConfig should be changed to signingConfigs.release
         release {
             // Caution! In production, you need to generate your own keystore file.
