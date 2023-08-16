@@ -10,16 +10,12 @@ import {
   View,
   StyleSheet,
   StatusBar,
-  Text,
   Image,
-  ScrollView,
-  RefreshControl,
   SafeAreaView,
   TouchableOpacity,
 } from 'react-native';
 import Entypo from 'react-native-vector-icons/Entypo';
 import {WebView} from 'react-native-webview';
-import {Linking} from 'react-native';
 import * as Progress from 'react-native-progress';
 import NetInfo from '@react-native-community/netinfo';
 
@@ -29,7 +25,6 @@ const App = () => {
   const [isConnected, setIsConnected] = useState(true);
   const [hasInjectedVariable, setHasInjectedVariable] = useState(false);
   const webViewRef = useRef(null);
-  let scrollY = 0;
 
   const uri = 'https://www.parrotias.com/';
 
