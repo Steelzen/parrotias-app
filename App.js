@@ -19,6 +19,7 @@ import {
 } from 'react-native';
 import Entypo from 'react-native-vector-icons/Entypo';
 import {WebView} from 'react-native-webview';
+import {Linking} from 'react-native';
 import * as Progress from 'react-native-progress';
 import NetInfo from '@react-native-community/netinfo';
 
@@ -26,11 +27,11 @@ const App = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [progress, setProgress] = useState(0);
   const [isConnected, setIsConnected] = useState(true);
-  const [refreshing, setRefreshing] = useState(false);
+  const [hasInjectedVariable, setHasInjectedVariable] = useState(false);
   const webViewRef = useRef(null);
-  const scrollViewRef = useRef(null);
-  const scrollThreshold = 10;
   let scrollY = 0;
+
+  const uri = 'https://www.parrotias.com/';
 
   const handleLoadStart = () => {
     setIsLoading(true);
@@ -53,18 +54,6 @@ const App = () => {
     }
   };
 
-  const handleScroll = syntheticEvent => {
-    const {contentOffset} = syntheticEvent.nativeEvent;
-    if (
-      contentOffset.y <= 0 &&
-      contentOffset.y <= scrollY.y &&
-      scrollY.y !== 0
-    ) {
-      webViewRef.current.reload();
-    }
-    scrollY = contentOffset;
-  };
-
   const handleRefresh = () => {
     webViewRef.current.reload();
   };
@@ -75,6 +64,11 @@ const App = () => {
 
   const handleForward = () => {
     webViewRef.current.goForward();
+  };
+
+  const navigateWithinWebView = url => {
+    const injectedJS = `window.location.href = "${url}";`;
+    webViewRef.current.injectJavaScript(injectedJS);
   };
 
   // Subscribe
@@ -112,12 +106,16 @@ const App = () => {
         {isConnected && (
           <WebView
             ref={webViewRef}
-            source={{uri: 'https://www.parrotias.com/'}}
+            source={{uri}}
             style={styles.webView}
             onLoadStart={handleLoadStart}
             onLoadEnd={handleLoadEnd}
             onLoadProgress={handleLoadProgress}
             onError={handleReload}
+            domStorageEnabled={true}
+            javaScriptEnabled={true}
+            setSupportMultipleWindows={false}
+            originWhitelist={['https://*', 'http://*', 'file://*', 'sms://*']}
           />
         )}
 

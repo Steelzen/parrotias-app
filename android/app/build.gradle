@@ -73,9 +73,10 @@ android {
 
     compileSdkVersion rootProject.ext.compileSdkVersion
 
+    // when release applicationId shoudl be changed to "com.parrotiasmobile"
     namespace "com.parrotias"
     defaultConfig {
-        applicationId "com.parrotiasmobile"
+        applicationId "com.parrotias"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 2
@@ -99,10 +100,11 @@ android {
         debug {
             signingConfig signingConfigs.debug
         }
+        // when release signingConfig should be changed to signingConfigs.release
         release {
             // Caution! In production, you need to generate your own keystore file.
             // see https://reactnative.dev/docs/signed-apk-android.
-            signingConfig signingConfigs.release
+            signingConfig signingConfigs.debug
             minifyEnabled enableProguardInReleaseBuilds
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
         }
